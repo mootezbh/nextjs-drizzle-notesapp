@@ -5,12 +5,12 @@ export default async function Home() {
   const user: any = await currentUser();
   if (!user) return;
   const fetchedData = await getUser(user?.id);
-  console.log(fetchedData);
+  console.log("FetchedData:", JSON.stringify(fetchedData, null, 2));
 
   return (
     fetchedData && (
       <main className="flex  items-center justify-between ">
-        <Todos todos={fetchedData[0].todos} user={fetchedData[0]} />
+        <Todos todos={fetchedData[0]?.todos} user={fetchedData[0]} />
       </main>
     )
   );
