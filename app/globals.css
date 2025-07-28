@@ -13,12 +13,10 @@ body {
   border-radius: 4px;
 }
 
-/* Retro neon glow for headings */
 .retro-glow {
   text-shadow: 0 0 8px #3a0ca3, 0 0 16px #7209b7, 0 0 24px #4361ee;
 }
 
-/* Glassmorphism card */
 .glass-card {
   @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
 }
