@@ -1,8 +1,6 @@
 import { getUser } from "@/actions/userActions";
 import Todos from "@/components/Todos";
 import { currentUser } from "@clerk/nextjs/server";
-import Image from "next/image";
-
 export default async function Home() {
   const user: any = await currentUser();
   if (!user) return;
