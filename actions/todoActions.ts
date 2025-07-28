@@ -1,6 +1,7 @@
 "use server";
-import { eq, not } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+
 import { db } from "@/db/drizzle";
 import { todos } from "@/db/schema";
 
@@ -12,10 +13,11 @@ export const getData = async (userId: number) => {
 
 export const addTodo = async (id: number, text: string, userId: number) => {
   await db.insert(todos).values({
-    id: id,
+    id,
     text: text,
     userId,
   });
+  revalidatePath("/");
 };
 
 export const deleteTodo = async (id: number) => {
@@ -24,11 +26,11 @@ export const deleteTodo = async (id: number) => {
   revalidatePath("/");
 };
 
-export const toggleTodo = async (id: number) => {
+export const toggleTodo = async (id: number, done: boolean) => {
   await db
     .update(todos)
     .set({
-      done: not(todos.done),
+      done: done,
     })
     .where(eq(todos.id, id));
 

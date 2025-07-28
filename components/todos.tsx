@@ -1,8 +1,8 @@
 "use client";
 import { FC, useState } from "react";
 import { todoType } from "@/types/todoType";
-import Todo from "./todo";
-import AddTodo from "./addTodo";
+import Todo from "./Todo";
+import AddTodo from "./AddTodo";
 import {
   addTodo,
   deleteTodo,
@@ -22,13 +22,13 @@ const Todos: FC<Props> = ({ todos, user }) => {
 
   // Function to create a new todo item
   const createTodo = (text: string) => {
-    const id = (todoItems.at(-1)?.id || 0) + 1;
+    // addUser();
+    const id = new Date().getTime();
     addTodo(id, text, user?.id);
     setTodoItems((prev) => [
       ...prev,
       { id: id, text, done: false, userId: user?.id },
     ]);
-    //addUser();
   };
 
   // Function to change the text of a todo item
@@ -40,13 +40,13 @@ const Todos: FC<Props> = ({ todos, user }) => {
   };
 
   // Function to toggle the "done" status of a todo item
-  const toggleIsTodoDone = (id: number) => {
+  const toggleIsTodoDone = (id: number, done: boolean) => {
     setTodoItems((prev) =>
       prev.map((todo) =>
         todo.id === id ? { ...todo, done: !todo.done } : todo
       )
     );
-    toggleTodo(id);
+    toggleTodo(id, done);
   };
 
   // Function to delete a todo item
