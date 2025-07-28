@@ -9,7 +9,6 @@ import {
   editTodo,
   toggleTodo,
 } from "@/actions/todoActions";
-import { addUser } from "@/actions/userActions";
 
 interface Props {
   todos: todoType[];
@@ -17,10 +16,8 @@ interface Props {
 }
 
 const Todos: FC<Props> = ({ todos, user }) => {
-  // State to manage the list of todo items
   const [todoItems, setTodoItems] = useState<todoType[]>(todos);
 
-  // Function to create a new todo item
   const createTodo = (text: string) => {
     // addUser();
     const id = new Date().getTime();
@@ -56,7 +53,7 @@ const Todos: FC<Props> = ({ todos, user }) => {
     <main className="flex mx-auto max-w-xl w-full min-h-screen flex-col items-center p-16">
       <div className="text-5xl font-medium">To-do app</div>
       <div className="w-full flex flex-col mt-8 gap-2">
-        {todoItems.map((todo) => (
+        {todoItems?.map((todo) => (
           <Todo
             key={todo.id}
             todo={todo}
