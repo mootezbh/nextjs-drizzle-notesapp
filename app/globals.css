@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+body {
+  @apply bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#3a0ca3] text-gray-100 min-h-screen;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1a1a2e;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a0ca3;
+  border-radius: 4px;
+}
+
+/* Retro neon glow for headings */
+.retro-glow {
+  text-shadow: 0 0 8px #3a0ca3, 0 0 16px #7209b7, 0 0 24px #4361ee;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
+}

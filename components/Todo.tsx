@@ -1,6 +1,7 @@
 "use client";
 import { ChangeEvent, FC, useState } from "react";
 import { todoType } from "@/types/todoType";
+import { FaEdit, FaSave, FaTimes, FaTrash } from "react-icons/fa";
 
 interface Props {
   todo: todoType;
@@ -51,10 +52,10 @@ const Todo: FC<Props> = ({
   };
 
   return (
-    <div className="flex items-center gap-2 p-4 border-gray-200 border-solid border rounded-lg">
+    <div className="glass-card flex items-center gap-2 p-4 mb-2 shadow-lg transition-all">
       <input
         type="checkbox"
-        className="text-blue-200 rounded-sm h-4 w-4"
+        className="accent-[#7209b7] rounded-sm h-4 w-4 focus:ring-2 focus:ring-[#3a0ca3]"
         checked={isDone}
         onChange={handleIsDone}
       />
@@ -63,40 +64,42 @@ const Todo: FC<Props> = ({
         value={text}
         onChange={handleTextChange}
         readOnly={!editing}
-        className={`${
-          todo.done ? "line-through" : ""
-        } outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full`}
+        className={`bg-transparent text-lg w-full outline-none px-2 py-1 rounded transition-all ${todo.done ? "line-through text-gray-400" : "retro-glow text-white"} read-only:border-transparent focus:border border-[#3a0ca3]`}
       />
       {/* Action buttons for editing, saving, canceling, and deleting */}
       <div className="flex gap-1 ml-auto">
         {editing ? (
           <button
             onClick={handleSave}
-            className="bg-green-600 text-green-50 rounded px-2 w-14 py-1"
+            className="bg-gradient-to-r from-[#3a0ca3] to-[#7209b7] text-white rounded px-3 py-1 shadow-md hover:scale-105 transition-transform flex items-center gap-1"
+            title="Save"
           >
-            Save
+            <FaSave /> <span className="hidden sm:inline">Save</span>
           </button>
         ) : (
           <button
             onClick={handleEdit}
-            className="bg-blue-400 text-blue-50 rounded w-14 px-2 py-1"
+            className="bg-gradient-to-r from-[#4361ee] to-[#3a0ca3] text-white rounded px-3 py-1 shadow-md hover:scale-105 transition-transform flex items-center gap-1"
+            title="Edit"
           >
-            Edit
+            <FaEdit /> <span className="hidden sm:inline">Edit</span>
           </button>
         )}
         {editing ? (
           <button
             onClick={handleCancel}
-            className="bg-red-400 w-16 text-red-50 rounded px-2 py-1"
+            className="bg-gradient-to-r from-[#7209b7] to-[#3a0ca3] text-white rounded px-3 py-1 shadow-md hover:scale-105 transition-transform flex items-center gap-1"
+            title="Cancel"
           >
-            Close
+            <FaTimes /> <span className="hidden sm:inline">Close</span>
           </button>
         ) : (
           <button
             onClick={handleDelete}
-            className="bg-red-400 w-16 text-red-50 rounded px-2 py-1"
+            className="bg-gradient-to-r from-[#7209b7] to-[#3a0ca3] text-white rounded px-3 py-1 shadow-md hover:scale-105 transition-transform flex items-center gap-1"
+            title="Delete"
           >
-            Delete
+            <FaTrash /> <span className="hidden sm:inline">Delete</span>
           </button>
         )}
       </div>

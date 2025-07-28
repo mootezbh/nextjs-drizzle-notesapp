@@ -50,9 +50,9 @@ const Todos: FC<Props> = ({ todos, user }) => {
   };
 
   return (
-    <main className="flex mx-auto max-w-xl w-full min-h-screen flex-col items-center p-16">
-      <div className="text-5xl font-medium">To-do app</div>
-      <div className="w-full flex flex-col mt-8 gap-2">
+    <main className="glass-card flex mx-auto max-w-xl w-full min-h-[60vh] flex-col items-center p-10 shadow-2xl">
+      <div className="text-5xl font-medium retro-glow mb-6">Your Todos</div>
+      <div className="w-full flex flex-col mt-2 gap-3">
         {todoItems?.map((todo) => (
           <Todo
             key={todo.id}

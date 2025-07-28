@@ -19,15 +19,16 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
   };
 
   return (
-    <div className="w-full flex gap-1 mt-2">
+    <div className="glass-card w-full flex gap-2 mt-6 p-2">
       <input
         type="text"
-        className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+        className="w-full px-3 py-2 bg-[#1a1a2e] border border-[#3a0ca3] text-white rounded outline-none focus:ring-2 focus:ring-[#7209b7] transition-all"
         onChange={handleInput}
         value={input}
+        placeholder="Add a new todo..."
       />
       <button
-        className="flex items-center justify-center bg-green-600 text-green-50 rounded px-2 h-9 w-14 py-1"
+        className="flex items-center justify-center bg-gradient-to-r from-[#3a0ca3] to-[#7209b7] text-white font-semibold rounded px-4 h-10 py-1 shadow-md hover:scale-105 transition-transform"
         onClick={handleAdd}
       >
         Add
